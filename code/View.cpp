@@ -13,15 +13,13 @@ namespace example
 
     View::View(unsigned width, unsigned height, CameraDemoMove & camMovement)
     :
-        width       (width ),
-        height      (height),
-        color_buffer(width, height),
-        rasterizer  (color_buffer )
+        color_buffer(width, height)
     {
-        camera  = Camera( width, height);
-        demoBunny_1 = Model(camera, mesh_file_path);
-		demoBunny_2 = Model(camera, mesh_file_path);
-		diorama = Model(camera, garden_mesh_file_path);
+		light = { 0, 10.f, 0.f, 1};
+        camera		= Camera (width, height);
+        demoBunny_1 = Model  (camera, light, mesh_file_path);
+		demoBunny_2 = Model  (camera, light, mesh_file_path);
+		diorama		= Model  (camera, light, garden_mesh_file_path);
 
 		diorama.translate({ 0.f, 2.5f, -10.f });
 		diorama.scale(3.f);
@@ -47,7 +45,7 @@ namespace example
 
         // Se actualizan los parámetros de transformation (sólo se modifica el ángulo):
 		diorama.rotate({ 0, 0.025f, 0.f });
-		demoBunny_1.translate({0 ,0, 0});
+		demoBunny_1.translate({ 0 ,0, 0 });
 
 
 		switch (*camMovement)

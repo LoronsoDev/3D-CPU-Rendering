@@ -82,7 +82,7 @@ public:
 		waiting_translations.push(t);
 	}
 
-	void update()
+	virtual void update()
 	{
 		while (!waiting_translations.empty())
 		{
@@ -117,7 +117,7 @@ public:
 	}
 	inline const glm::vec3	get_position		()		
 	{
-		return this->position;
+		return this->transform[3];
 	}
 	inline const Entity*	get_parent_entity	()
 	{

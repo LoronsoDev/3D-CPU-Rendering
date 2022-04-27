@@ -39,20 +39,11 @@
             static constexpr char garden_mesh_file_path[] = "../../assets/ball.obj";
 
             Color_Buffer                    color_buffer;
-            Rasterizer  < Color_Buffer >    rasterizer;
             Renderer                        renderer;
 
-            Vertex_Buffer               original_vertices;
-            Index_Buffer                original_indices;
-            Vertex_Colors               original_colors;
-            Vertex_Buffer               transformed_vertices;
-            vector< Point4i >           display_vertices;
-
+            glm::fvec4 light;
             Model  demoBunny_1, diorama, demoBunny_2;
             Camera camera;
-
-            unsigned width;
-            unsigned height;
 
         public:
 
@@ -83,8 +74,6 @@
 
         private:
 
-            bool  is_frontface (const Vertex * const projected_vertices, const int * const indices);
-            float rand_clamp   () { return float(rand () & 0xff) * 0.0039215f; }
             void clip_polygon(const Vertex * const polygon_vertices, const int* const indices, Vertex* clipper_points);
         };
 

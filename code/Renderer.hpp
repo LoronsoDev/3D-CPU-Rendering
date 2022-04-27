@@ -40,6 +40,7 @@ public:
 	{
         for (Mesh m : model.meshes)
         {
+            m.update_lighting();
             render_camera(*model.renderCam, model);
             /// <summary>
             /// We apply the perspective of the camera.
@@ -112,11 +113,6 @@ public:
     void clear()
     {
         activeRasterizer.clear();
-    }
-
-    void clear_camera(Camera& camera)
-    {
-
     }
 
     bool is_frontface(const glm::fvec4* const projected_vertices, const int* const indices)
